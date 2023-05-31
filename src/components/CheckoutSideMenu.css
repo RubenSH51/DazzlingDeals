@@ -1,0 +1,11 @@
+.checkout-side-menu
+{
+    width: 360px;
+    height: 94vh;
+    z-index: 1;
+}
+
+.checkout-side-menu-total
+{
+    width: 360px;
+}

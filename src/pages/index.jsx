@@ -1,0 +1,7 @@
+export { Home } from "./Home/Home"
+export { MyAccount } from "./MyAccount/MyAccount"
+export { MyOrder } from "./MyOrder/MyOrder"
+export { MyOrders } from "./MyOrders/MyOrders"
+export { SignIn } from "./SignIn/SignIn"
+export { NotFound } from "./NotFound/NotFound"
+export { Testing } from "./Testing/Testing"

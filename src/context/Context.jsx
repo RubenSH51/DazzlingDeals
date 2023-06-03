@@ -9,6 +9,11 @@ export const ShoppingCartProvider = ({children}) => {
     const [productToShow, setProductToShow] = useState({})
     const [cartProducts, setCartProducts] = useState([])
 
+    // >>>> TESTING
+    //const [cartProductsWithUnits, setCartProductsWithUnits] = useState([])
+
+    // <<<< TESTING
+
     //  >>>>>>>>>>>>>>>>>>>>>>>>> Get products! >>>>>>>>>>>>>>>>>>>>>>>>>
     const [items, setItems] = useState([]);
     
@@ -72,8 +77,26 @@ export const ShoppingCartProvider = ({children}) => {
     const [order, setOrder] = useState([]);
 
 
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+    //  >>>>>>>>>>>>>>>>>>>>>>>>> Sign in >>>>>>>>>>>>>>>>>>>>>>>>>
+
+    const user = {name: "Sherlock", password: "5179", email: "sherlock@holmes.com"}
+    
+    let [userLogged, setUserLogged] = useState(false);
+
+    //localStorage.setItem('Acceso',userLogged.toString())
 
     // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+    //  >>>>>>>>>>>>>>>>>>>>>>>>> Nav Bar >>>>>>>>>>>>>>>>>>>>>>>>>
+    const [showLogInMenu, setShowLogInMenu] = useState(false)
+
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    
+
 
   return (
     <ShoppingCartContext.Provider 
@@ -104,7 +127,14 @@ export const ShoppingCartProvider = ({children}) => {
         matchedResults, 
         setMatchedResults,
         searchByCategory, 
-        setSearchByCategory
+        setSearchByCategory,
+
+        user,
+        userLogged,
+        setUserLogged,
+
+        showLogInMenu, 
+        setShowLogInMenu
         }}>
           {children}
     </ShoppingCartContext.Provider>

@@ -13,51 +13,33 @@ export const Card = ({id, title, description,price,images,category}) => {
     
     //  console.log(cartProducts)
 
-    
+    let unidadesTest = 0;
 
-    
+    let {userLogged, setUserLogged} = useContext(ShoppingCartContext)
 
-    // function carrito(event,data)
-    // {
-    //     event.stopPropagation() 
+    // let userLoggedIn = localStorage.getItem('Acceso');
 
-    //     OpenCheckoutSideMenu()
-
-    //     setActive(!active)
-        
-    //     if (active)
-    //     {
-    //         setCount(count-1)
-    //         let newProductList = cartProducts.filter(item => item.id!== data.id);
-    //         setCartProducts(newProductList)
-    //     }
-    //     else
-    //     {
-    //         setCount(count+1);
-    //         let newProductList = [...cartProducts, data];
-    //         setCartProducts(newProductList);
-    //     }
-
-    // }
+    // console.log("userLoggedIn: ",userLoggedIn)
 
     function carrito2(event,data)
     {
-        event.stopPropagation() 
-        OpenCheckoutSideMenu()
+        if(userLogged){
+            event.stopPropagation() 
+            OpenCheckoutSideMenu()
 
-        setCount(count+1);
+            setCount(count+1);
 
-        /* TEST: AGREGAR UNIDADES A LOS OBJETOS DEL ARRAY */
-        let addingUnits = cartProducts.map(product => {
-            return { ...product, unidades: 1 };
-        })
+            /* TEST: AGREGAR UNIDADES A LOS OBJETOS DEL ARRAY */
+            // let addingUnits = cartProducts.map(product => {
+            //     return { ...product, unidades: 1 };
+            // })
 
-        //let newProductList = [...cartProducts, data];
-        let newProductList = [...addingUnits, data];
-        /* TEST: AGREGAR UNIDADES A LOS OBJETOS DEL ARRAY */
+            let newProductList = [...cartProducts, data];
+            //let newProductList = [...addingUnits, data];
+            /* TEST: AGREGAR UNIDADES A LOS OBJETOS DEL ARRAY */
 
 
-        setCartProducts(newProductList)
+            setCartProducts(newProductList)}
 
     }
 
@@ -65,7 +47,6 @@ export const Card = ({id, title, description,price,images,category}) => {
     {
         OpenAside()
         setProductToShow(data)
-
     }
 
     const renderButton = (id) => {
@@ -87,7 +68,7 @@ export const Card = ({id, title, description,price,images,category}) => {
                 :
                 <button
                     type='button' 
-                    onClick={(event) => carrito2(event,{id,title, description, price, images, category})}
+                    onClick={(event) => carrito2(event,{id,title, description, price, images, category, unidadesTest})}
                     className={`absolute bg-white top-1 right-1 flex justify-center align-center w-6 h-6 rounded-full text-black text-md`  }> 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -102,7 +83,7 @@ export const Card = ({id, title, description,price,images,category}) => {
 
   return (
     <div 
-        className='bg-white cursor-pointer w-52 h-56 rounded-lg border-2 border-solid border-black'
+        className='bg-white cursor-pointer w-44 h-48 rounded-lg border-2 border-solid border-black'
         onClick={() => showProduct({title, description,price,images,category})}
         >
         <figure className='relative mb-2 w-full h-4/5 '>

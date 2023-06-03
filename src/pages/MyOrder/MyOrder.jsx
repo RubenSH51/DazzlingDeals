@@ -39,7 +39,7 @@ export const MyOrder = () => {
                     price={product.price}
                     images={product.images}
                    // total={product.total}
-                    unidades={product.unidades}
+                    //unidades={product.unidadesTest}
                 />
 
             ))

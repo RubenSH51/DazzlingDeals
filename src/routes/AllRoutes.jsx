@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes, Route }  from "react-router-dom"
-import { Home, MyAccount, MyOrder, MyOrders, SignIn, NotFound, Testing } from "../pages/" 
+import { Home, MyAccount, MyOrder, MyOrders, SignUp,
+  NotFound, Testing, MyLastOrder, MySelectedOrder, PasswordRecovery } from "../pages/" 
 
 export const AllRoutes = () => {
   return (
@@ -15,13 +16,23 @@ export const AllRoutes = () => {
             <Route path='/others' element={<Home />}/>
             <Route path='/myorder' element={<MyOrder />}/>
             <Route path='/myorders' element={<MyOrders />}/>
-            <Route path='/myorders/last' element={<MyOrder />}/>
-            <Route path='/myorders/:id' element={<MyOrder />}/>
+            {/* <Route path='/myorders/last' element={<MyOrder />}/>
+            <Route path='/myorders/:id' element={<MyOrder />}/> */}
+
+            <Route path='/myorders/last' element={<MyLastOrder />}/>
+            <Route path='/myselectedorder/:id' element={<MySelectedOrder />}/>
+
             {/* <Route path='/myorders/:id' element={<Testing/>}/> */}
-            <Route path='/signin' element={<SignIn />}/>
+            <Route path='/signup' element={<SignUp />}/>
             <Route path='/myaccount' element={<MyAccount />}/>
+
+            <Route path='/password-recovery' element={<PasswordRecovery />}/>
+
             <Route path='*' element={<NotFound />}/>
+
         </Routes>
     </div>
   )
 }
+
+

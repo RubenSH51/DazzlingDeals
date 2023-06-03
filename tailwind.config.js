@@ -6,6 +6,14 @@ export default {
   ],
   theme: {
     extend: {},
+    minWidth: {
+      'aa': '150px',
+      'bb': '200px',
+      'cc': '250px',
+      'dd': '300px',
+      'ee': '350px',
+      'ff': '400px',
+    }
   },
   plugins: [],
 }

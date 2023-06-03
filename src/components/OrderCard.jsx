@@ -3,23 +3,26 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { ShoppingCartContext } from "../context/Context"
 
-export const OrderCard = ({id,title,category,images,price, removeProduct,unidades}) => {
+export const OrderCard = ({id,title,category,images,price, removeProduct,handleQuantityChange,unidades}) => {
 
-  const [units, setUnits] = useState(1);
+  const [units, setUnits] = useState(0);
 
-  let { cartProducts, setCartProducts } = useContext(ShoppingCartContext);
+  let { cartProducts, setCartProducts, order, setOrder } = useContext(ShoppingCartContext);
 
   let unitsOption;
   let removeOption;
 
-  const [totalPerUnits, setTotalPerUnits] = useState(price)
-
-  // let index = cartProducts.length
-  // let producto_unidades = {index:1}
-  // setUnits(producto_unidades.index)
   
+  let path = window.location.pathname
 
-  //console.log('Estoy aca!')
+  useEffect(() => {
+    //
+    if(path==='/')
+    {
+      sumarUnidades(id)
+    }
+  },[])
+
 
   if (removeProduct)
   {
@@ -55,9 +58,10 @@ export const OrderCard = ({id,title,category,images,price, removeProduct,unidade
     if (units>1){
       setUnits(units-1);
       let producto = cartProducts.find(product => product.id===id)
-      console.log(producto)
-      producto.unidades = units;
-      setTotalPerUnits(price*producto.unidades)
+
+      producto.unidadesTest = units -1;
+      producto.total = producto.unidadesTest*price
+      handleQuantityChange(id, producto.unidadesTest)
     }
     
   }
@@ -65,16 +69,15 @@ export const OrderCard = ({id,title,category,images,price, removeProduct,unidade
   function sumarUnidades(id){
     setUnits(units+1);
     let producto = cartProducts.find(product => product.id===id)
-    console.log(producto)
-
-    producto.unidades = units;
-    setTotalPerUnits(price*producto.unidades)
-
+ 
+    producto.unidadesTest = units+1;
+    producto.total = producto.unidadesTest*price
+    handleQuantityChange(id, producto.unidadesTest)
   }
 
 
   return (
-    <div key={id} className="relative  p-2 border border-black border-solid rounded-lg">
+    <div key={id} className="relative p-2 border border-black border-solid rounded-lg">
         <div >
           <h2 className='font-bold'>{title}</h2>
         </div>
@@ -82,7 +85,6 @@ export const OrderCard = ({id,title,category,images,price, removeProduct,unidade
             <div>
               <p className="text-left"><i>{category.name}</i></p>
               <p className='text-left'>Price unit: <b>${price}</b></p>
-              <p className='text-left'>Units: {unidades}</p>
             </div>
             <div>
                 <img
@@ -94,7 +96,7 @@ export const OrderCard = ({id,title,category,images,price, removeProduct,unidade
         </div>
         <div className='flex justify-between'>
           {unitsOption}
-          <p className='text-left my-1'>Total: <b>${totalPerUnits}</b></p>
+          <p>Total: $<b>{price*units}</b></p>
         </div>
             
         {removeOption}

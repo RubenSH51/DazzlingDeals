@@ -11,7 +11,8 @@ export const NavBar = () => {
     let activeStyle = 'underline underline-offset-4';
     const { count, setCount,cartProducts,setSearchByCategory } = useContext(ShoppingCartContext);
 
-    let {userLogged,setUserLogged,showLogInMenu, setShowLogInMenu} = useContext(ShoppingCartContext)
+    let {userLogged,setUserLogged,showLogInMenu, setShowLogInMenu,
+        currentUser, setCurrentUser} = useContext(ShoppingCartContext)
 
 
     function showSignIn()
@@ -68,7 +69,7 @@ export const NavBar = () => {
             {userLogged &&
             <>
                 <li className='text-white/60'>
-                    ruben@gmail.com
+                    {currentUser.email}
                 </li>
                 <li>
                     <NavLink to='/myorders' className={({isActive }) => isActive ? activeStyle : undefined}>

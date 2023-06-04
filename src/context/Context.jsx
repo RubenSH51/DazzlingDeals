@@ -82,7 +82,9 @@ export const ShoppingCartProvider = ({children}) => {
 
     //  >>>>>>>>>>>>>>>>>>>>>>>>> Sign in >>>>>>>>>>>>>>>>>>>>>>>>>
 
-    const user = {name: "Sherlock", password: "5179", email: "sherlock@holmes.com"}
+    const sherlock = {name: "Sherlock", password: "5179", email: "sherlock@holmes.com"}
+
+    
     
     let [userLogged, setUserLogged] = useState(false);
 
@@ -91,11 +93,29 @@ export const ShoppingCartProvider = ({children}) => {
     // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
-    //  >>>>>>>>>>>>>>>>>>>>>>>>> Nav Bar >>>>>>>>>>>>>>>>>>>>>>>>>
+    //  >>>>>>>>>>>>>>>>>>>>>>>>> Nav Bar and user >>>>>>>>>>>>>>>>>>>>>>>>>
     const [showLogInMenu, setShowLogInMenu] = useState(false)
+    const [currentUser, setCurrentUser] = useState('')
+    const [userList, setUserList] = useState(() => {
+      const storedUserList = JSON.parse(localStorage.getItem('Acceso'));
+      return storedUserList ? storedUserList : [];
+    });
 
     // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> LocalStorage >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // Lo dejo comentado para que no renueve la lista cada vez que se refresca la página
+    // useEffect(() => {
+
+    //   localStorage.setItem('Acceso', JSON.stringify(userList));
+
+    // },[userList])
+
+
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
 
 
   return (
@@ -129,12 +149,15 @@ export const ShoppingCartProvider = ({children}) => {
         searchByCategory, 
         setSearchByCategory,
 
-        user,
         userLogged,
         setUserLogged,
 
         showLogInMenu, 
-        setShowLogInMenu
+        setShowLogInMenu,
+        currentUser, 
+        setCurrentUser,
+        userList, 
+        setUserList
         }}>
           {children}
     </ShoppingCartContext.Provider>

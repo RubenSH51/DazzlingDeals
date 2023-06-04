@@ -13,7 +13,7 @@ export const CardsContainer = ({items,setItems}) => {
 
   return (
     <div className='flex justify-center'>
-        <div className={`${items.length>0 ? 'w-4/6 flex flex-wrap gap-2' : ''}  relative top-14`}>
+        <div className={`${items.length>0 ? 'w-4/6 flex flex-wrap gap-2' : ''} justify-evenly relative top-14`}>
           {items.length>0 ?
             items?.map((item) => (
               <Card 

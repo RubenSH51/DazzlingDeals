@@ -6,7 +6,8 @@ import { ShoppingCartContext } from '../context/Context'
 
 export const SignIn = () => {
 
-  let {user, userLogged,setUserLogged} = useContext(ShoppingCartContext)
+  let { userLogged,setUserLogged,userList, 
+    setUserList,currentUser, setCurrentUser} = useContext(ShoppingCartContext)
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -16,12 +17,25 @@ export const SignIn = () => {
 
 
   function logginIn(){
-    if((username === user.name) && (password === user.password))
+
+    let person = userList.find(user => user.name === username)
+
+    if(person)
     {
-      setUserLogged(!userLogged);
+      if((password === person.password))
+      {
+        setUserLogged(!userLogged);
+        setCurrentUser(person)
+      }
+        
     }
-      setPassword('');
-      setUsername('');
+    else
+    {
+      console.log('Usuario no encontrado.')
+    }
+
+    setPassword('');
+    setUsername('');
 
   }
 

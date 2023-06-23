@@ -15,7 +15,6 @@ export const MyOrder = () => {
    if (index === 'last') index = order[order.length-1].id;
 
 
-  //let index = order[order.length-1].id
 
   return (
     <div className='flex justify-center flex-col text-black items-center'>

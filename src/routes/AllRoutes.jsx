@@ -1,7 +1,10 @@
 import React from 'react'
 import { Routes, Route }  from "react-router-dom"
+
+// Pages
 import { Home, MyAccount, MyOrder, MyOrders, SignUp,
-  NotFound, Testing, MyLastOrder, MySelectedOrder, PasswordRecovery } from "../pages/" 
+  NotFound, Testing, MyLastOrder, MySelectedOrder, 
+  PasswordRecovery, TermsAndConditions, PrivacyPolicy, Admin, AboutMe} from "../pages/" 
 
 export const AllRoutes = () => {
   return (
@@ -27,6 +30,11 @@ export const AllRoutes = () => {
             <Route path='/myaccount' element={<MyAccount />}/>
 
             <Route path='/password-recovery' element={<PasswordRecovery />}/>
+            <Route path='/terms-and-conditions' element={<TermsAndConditions />}/>
+            <Route path='/privacy-policy' element={<PrivacyPolicy />}/>
+
+            <Route path='/admin' element={<Admin />}/>
+            <Route path='/about-me' element={<AboutMe />}/>
 
             <Route path='*' element={<NotFound />}/>
 

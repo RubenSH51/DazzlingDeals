@@ -1,4 +1,29 @@
 .positionPerfecta
 {
     right: -55px;
+    top: 11px;
+}
+
+
+.flechaCart
+{
+    position: absolute;
+    top: 40px;
+    right: 22px;
+    animation: moveUpDown 2s infinite;
+    /* display: none; */
+}
+
+@keyframes moveUpDown {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-10px) scale(1);
+    }
+  }
+
+.ocultar
+{
+    display: none;
 }

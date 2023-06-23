@@ -15,14 +15,12 @@ export const MyLastOrder = () => {
   let index = currentPath.substring(currentPath.lastIndexOf('/')+1);
   if (index === 'last') index = order[order.length-1].id;
 
-  //console.log('La order es: ',order)
-  //console.log(order.filter(product => product.id == index)[0])
     console.log(index)
   return (
     <div className='flex justify-center flex-col text-black items-center'>
       <div className='flex relative w-full justify-center'>
-        <h2 className='text-2xl my-4'>My Last Last Order</h2>
-        <p className='absolute top-5 right-5'>Go to orders
+        <h2 className='text-2xl my-4 font-bold '>My Last Order</h2>
+        <p className='absolute top-5 right-5 text-xl'>Go to orders
           <Link to="/myorders">
             <span className='ml-2'>🔙</span>
           </Link>

@@ -8,5 +8,7 @@ export { Testing } from "./Testing/Testing"
 export { MyLastOrder } from "./MyLastOrder/MyLastOrder"
 export { MySelectedOrder } from "./MySelectedOrder/MySelectedOrder"
 export { PasswordRecovery } from "./PasswordRecovery/PasswordRecovery"
-
-
+export { TermsAndConditions } from "./TermsAndConditions/TermsAndConditions"
+export { PrivacyPolicy } from "./PrivacyPolicy/PrivacyPolicy"
+export { Admin } from "./Admin/Admin"
+export { AboutMe } from "./AboutMe/AboutMe"

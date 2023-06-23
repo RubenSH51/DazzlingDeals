@@ -14,9 +14,9 @@ export const LastOrder = ({id,title,category,images,price}) => {
         </div>
         <div className='flex justify-between items-center'>
             <div>
-                <p className="text-left"><i>{category.name}</i></p>
-                <p className='text-left'>Price unit: <b>${price}</b></p>
-                <p className='text-left'>Units: {productoDeLaCard.unidadesTest}</p> 
+                <p className="text-left">Category: <b><i>{category.name}</i></b></p>
+                <p className='text-left'>Unit price: <b>${price}</b></p>
+                <p className='text-left'>Units: <b>{productoDeLaCard.unidadesTest}</b></p> 
             </div>
             <div>
                 <img

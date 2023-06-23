@@ -11,7 +11,6 @@ export const Home = () => {
     searchByTitle, setSearchByTitle,
     matchedResults, setMatchedResults ,setSearchByCategory} = useContext(ShoppingCartContext) 
 
-    //console.log(matchedResults)
 
      useEffect(() => {
       // Con este useEffect evito que se recargue la pagina con las opciones del navbar y sus onclicks
@@ -47,7 +46,7 @@ export const Home = () => {
         {
           if(category!=='all')
           {
-            itemsToRender = items.filter(item => item.category.name.toLowerCase() === category.toLowerCase());
+            itemsToRender = items?.filter(item => item.category.name.toLowerCase() === category.toLowerCase());
           }
           else
           {
@@ -59,6 +58,17 @@ export const Home = () => {
       }
       else
       {
+
+        // if(category!=='all' || category!=='')
+        //   {
+        //     itemsToRender = items
+        //   }
+        // else
+        //   {
+        //     itemsToRender = items;
+        //   }
+
+
         if(searchByTitle !== '')
         {
           itemsToRender = matchedResults;
@@ -67,11 +77,15 @@ export const Home = () => {
         {
           itemsToRender = items;
         }
+
+
+
       }
-  
-      //console.log(itemsToRender)
 
       return itemsToRender;
+
+
+      
     }
 
   return (
@@ -79,7 +93,6 @@ export const Home = () => {
       <ProductDetail />
       <Search />
       <CardsContainer 
-        //items={searchByTitle === '' ? items : matchedResults}
         items={filteredItems()}
         setItems={setItems}
       />

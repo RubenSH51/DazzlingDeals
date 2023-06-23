@@ -6,21 +6,16 @@ export const ShoppingCartContext = createContext()
 export const ShoppingCartProvider = ({children}) => {
 
     const [count, setCount] = useState(0);
-    const [productToShow, setProductToShow] = useState({})
-    const [cartProducts, setCartProducts] = useState([])
-
-    // >>>> TESTING
-    //const [cartProductsWithUnits, setCartProductsWithUnits] = useState([])
-
-    // <<<< TESTING
-
+    const [productToShow, setProductToShow] = useState({});
+    const [cartProducts, setCartProducts] = useState([]);
     //  >>>>>>>>>>>>>>>>>>>>>>>>> Get products! >>>>>>>>>>>>>>>>>>>>>>>>>
     const [items, setItems] = useState([]);
     
-
+  //TEST
     useEffect(()=> {
   
-      let url =  'https://api.escuelajs.co/api/v1/products';
+      setTimeout(() => {
+        let url =  'https://api.escuelajs.co/api/v1/products';
       //let url = 'https://fakestoreapi.com/products'
   
       fetch(url)
@@ -31,28 +26,39 @@ export const ShoppingCartProvider = ({children}) => {
         .catch(error => {
           console.log('Error: ',error);
         })
+      },2000)
   
     },[])
 
 
     //  >>>>>>>>>>>>>>>>>>>>>>>>> Get products by Search! >>>>>>>>>>>>>>>>>>>>>>>>>
     const [searchByTitle, setSearchByTitle] = useState('');
-    //let matched = items.filter(x=> x.title.startsWith(searchByTitle))
-    const [matchedResults, setMatchedResults] = useState('')
-
-
-    const [searchByCategory, setSearchByCategory] = useState('');
+    const [matchedResults, setMatchedResults] = useState('');
+    const [searchByCategory, setSearchByCategory] = useState('all');
 
     //  >>>>>>>>>>>>>>>>>>>>>>>>> Product Detail >>>>>>>>>>>>>>>>>>>>>>>>>
     const [isAsideOpen, setIsAsideOpen] = useState(false);
 
     function OpenAside()
     {
+      CloseCheckoutSideMenu();
       setIsAsideOpen(true);
     }
     function CloseAside()
     {
       setIsAsideOpen(false);
+    }
+
+    function ToggleAside()
+    {
+      if(isAsideOpen)
+      {
+        OpenAside()
+      }
+      else
+      {
+        CloseAside()
+      }
     }
     
 
@@ -70,11 +76,18 @@ export const ShoppingCartProvider = ({children}) => {
       setIsCheckoutsideMenuOpen(false);
     }
 
-
-
-    //  >>>>>>>>>>>>>>>>>>>>>>>>> Shopping cart - Order >>>>>>>>>>>>>>>>>>>>>>>>>
-
-    const [order, setOrder] = useState([]);
+    function ToggleCheckOutSideMenu()
+    {
+      if(isCheckoutsideMenuOpen)
+      {
+        
+        CloseCheckoutSideMenu()
+      }
+      else
+      {
+        OpenCheckoutSideMenu()
+      }
+    }
 
 
     // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -82,15 +95,16 @@ export const ShoppingCartProvider = ({children}) => {
 
     //  >>>>>>>>>>>>>>>>>>>>>>>>> Sign in >>>>>>>>>>>>>>>>>>>>>>>>>
 
-    const sherlock = {name: "Sherlock", password: "5179", email: "sherlock@holmes.com"}
-
-    
-    
     let [userLogged, setUserLogged] = useState(false);
 
-    //localStorage.setItem('Acceso',userLogged.toString())
 
     // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    //  >>>>>>>>>>>>>>>>>>>>>>>>> control de cards >>>>>>>>>>>>>>>>>>>>>>>>>
+    const [inicio, setInicio] = useState(0);
+    
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 
 
     //  >>>>>>>>>>>>>>>>>>>>>>>>> Nav Bar and user >>>>>>>>>>>>>>>>>>>>>>>>>
@@ -104,7 +118,7 @@ export const ShoppingCartProvider = ({children}) => {
     // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     
     // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> LocalStorage >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    // Lo dejo comentado para que no renueve la lista cada vez que se refresca la página
+    //Lo dejo comentado para que no renueve la lista cada vez que se refresca la página
     // useEffect(() => {
 
     //   localStorage.setItem('Acceso', JSON.stringify(userList));
@@ -115,8 +129,20 @@ export const ShoppingCartProvider = ({children}) => {
     // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
+    //  >>>>>>>>>>>>>>>>>>>>>>>>> Shopping cart - Order >>>>>>>>>>>>>>>>>>>>>>>>>
+    const [order, setOrder] = useState([]);
 
 
+
+
+    //  >>>>>>>>>>>>>>>>>>>>>>>>> SignUp Lista avatars >>>>>>>>>>>>>>>>>>>>>>>>>
+    
+    const [selectedAvatar, setSelectedAvatar] = useState('');
+    const handleAvatarSelect = (AvatarId) => {
+      setSelectedAvatar(AvatarId);
+    };
+    const [isAvatarsModalOpen, setIsAvatarsModalOpen] = useState(false);
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   return (
     <ShoppingCartContext.Provider 
@@ -127,6 +153,7 @@ export const ShoppingCartProvider = ({children}) => {
         setIsAsideOpen,
         OpenAside,
         CloseAside,
+        ToggleAside, // Es de product detail. Todavía no la usé
         productToShow, 
         setProductToShow,
         cartProducts, 
@@ -135,6 +162,7 @@ export const ShoppingCartProvider = ({children}) => {
         setIsCheckoutsideMenuOpen,
         OpenCheckoutSideMenu,
         CloseCheckoutSideMenu,
+        ToggleCheckOutSideMenu, // Esta es nueva. Se la asigné al carrito del navbar
 
         order,
         setOrder,
@@ -157,7 +185,17 @@ export const ShoppingCartProvider = ({children}) => {
         currentUser, 
         setCurrentUser,
         userList, 
-        setUserList
+        setUserList,
+
+        inicio, 
+        setInicio,
+
+        selectedAvatar, 
+        setSelectedAvatar,
+        handleAvatarSelect,
+        isAvatarsModalOpen, 
+        setIsAvatarsModalOpen
+
         }}>
           {children}
     </ShoppingCartContext.Provider>

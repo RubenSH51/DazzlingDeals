@@ -17,13 +17,15 @@
             productToShow, setProductToShow, 
             cartProducts, setCartProducts,
             order, setOrder,
-            searchByTitle, setSearchByTitle} = useContext(ShoppingCartContext);
+            searchByTitle, setSearchByTitle,
+            currentUser, setCurrentUser,
+            userList, setUserList} = useContext(ShoppingCartContext);
 
         let {title, description, price, category, images} = productToShow;
 
         const [totalAcumulado, setTotalAcumulado] = useState(0)
 
- 
+    
         function handleCheckout()
         {
             const [date,time] = getDate();
@@ -33,12 +35,29 @@
                 time: time,
                 products: cartProducts,
                 length: cartProducts.length,
-                total: totalAcumulado
+                total: totalAcumulado,
+                costumer: currentUser.id // NEW
             };
             CloseCheckoutSideMenu();
             setOrder([...order,orderToAdd]);
-            setCartProducts([]);
 
+            let updatedUser = userList.filter(user => user.id == currentUser.id)[0];
+
+            updatedUser = {
+                ...updatedUser,
+                orders: [...updatedUser.orders, orderToAdd]
+              };
+            
+            const updatedUserList = userList.map((user) =>
+              user.id === currentUser.id ? updatedUser : user
+            );
+
+
+            localStorage.setItem('Acceso', JSON.stringify(updatedUserList))
+            setUserList(updatedUserList)
+
+            // reset
+            setCartProducts([]);
             setSearchByTitle('');
             
 
@@ -57,7 +76,6 @@
             total += card.total;
             });
             setTotalAcumulado(total)
-            //console.log('El total es: ',totalAcumulado)
         },[cartProducts])
 
 
@@ -117,6 +135,7 @@
                     <span className=''>Total: </span>
                     <span className='font-bold'>${totalAcumulado}</span>
                 </div>
+                <div>
                 <Link to="/myorders/last">
                     <button 
                         type='button'
@@ -125,6 +144,7 @@
                             >Checkout
                     </button>
                 </Link>
+                </div>
             </div>
 
         </aside>

@@ -1,0 +1,43 @@
+
+
+.ModalDeleteUser,
+.ModalUserOrders
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.ModalDeleteUser--content
+{
+    z-index: 10000;
+    position: relative;
+    width: 300px;
+    height: 170px;
+    background-color: rgb(236, 238, 238);
+    color: black;
+    top: calc(50% - 85px);
+    left: calc(50% - 150px);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+
+
+.ModalUserOrders--content
+{
+    z-index: 10000;
+    position: relative;
+    width: 900px;
+    height: 500px;
+    background-color: rgb(236, 238, 238);
+    color: black;
+    top: calc(50% - 250px);
+    left: calc(50% - 450px);
+    border-radius: 10px;
+    padding: 10px;
+}
+

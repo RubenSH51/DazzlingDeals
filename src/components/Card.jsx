@@ -10,22 +10,18 @@ export const Card = ({id, title, description,price,images,category}) => {
         CloseAside, productToShow, setProductToShow, 
         cartProducts, setCartProducts,
         OpenCheckoutSideMenu} = useContext(ShoppingCartContext);
-    
-    //  console.log(cartProducts)
+
 
     let unidadesTest = 0;
-
     let {userLogged, setUserLogged} = useContext(ShoppingCartContext)
 
-    // let userLoggedIn = localStorage.getItem('Acceso');
 
-    // console.log("userLoggedIn: ",userLoggedIn)
 
     function carrito2(event,data)
     {
         if(userLogged){
             event.stopPropagation() 
-            OpenCheckoutSideMenu()
+            //OpenCheckoutSideMenu()
 
             setCount(count+1);
 
@@ -59,8 +55,8 @@ export const Card = ({id, title, description,price,images,category}) => {
                 ?
                 <button
                     type='button' 
-
-                    className={`absolute check-icon3 bg-green-600 text-white top-1 right-1 flex justify-center align-center w-6 h-6 rounded-full text-md`  }> 
+                    
+                    className={`absolute check-icon3 bg-green-600 text-white top-0 right-0 flex justify-center align-center w-6 h-6 rounded-full text-md`  }> 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -69,7 +65,7 @@ export const Card = ({id, title, description,price,images,category}) => {
                 <button
                     type='button' 
                     onClick={(event) => carrito2(event,{id,title, description, price, images, category, unidadesTest})}
-                    className={`absolute bg-white top-1 right-1 flex justify-center align-center w-6 h-6 rounded-full text-black text-md`  }> 
+                    className={`absolute bg-white top-0 right-0 flex justify-center align-center w-6 h-6 rounded-full text-black text-md`  }> 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -83,10 +79,12 @@ export const Card = ({id, title, description,price,images,category}) => {
 
   return (
     <div 
-        className='bg-white cursor-pointer w-44 h-48 rounded-lg border-2 border-solid border-black'
+        className='bg-white cursor-pointer w-52 h-48 
+        rounded-lg border-2 border-solid border-black
+        transition-all duration-300 ease-in-out hover:bg-slate-600  '
         onClick={() => showProduct({title, description,price,images,category})}
         >
-        <figure className='relative mb-2 w-full h-4/5 '>
+        <figure className='relative mb-2 w-full h-4/5 p-1'>
             <img 
                 src={images.length>0 ? images[0] : ""}
                 alt={description} 
@@ -97,7 +95,7 @@ export const Card = ({id, title, description,price,images,category}) => {
         </figure>
         <p className='w-full h-1/5 flex justify-around items-center'>
             <span className='text-black text-xs '>{title}</span>
-            <span className='text-black'>${price}</span>
+            <span className='text-black'><b>${price}</b></span>
         </p>
     </div>
   )

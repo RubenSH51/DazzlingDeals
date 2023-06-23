@@ -1,0 +1,23 @@
+
+input:disabled {
+    color: red;
+  }
+
+.MyAccountModal--content
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(226, 225, 225);
+    width: 300px;
+    height: 250px;
+    position: relative;
+    top: calc(50% - 125px);
+    left: calc(50% - 150px);
+    border-radius: 10px;
+    border: 1px solid black;
+    outline: 1px solid rgb(78, 78, 78);
+    outline-offset: -5px;
+    padding: 10px;
+}

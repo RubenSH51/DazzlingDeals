@@ -100,7 +100,10 @@ export const MyAccount = () => {
 
       setisSuccessMessage(true);
 
-      document.getElementById('navbar-avatar').src = "../../../public/avatars/" + selectedAvatar;
+      // ${imageBaseUrl}/avatars/
+
+
+      document.getElementById('navbar-avatar').src = imageBaseUrl+"/avatars/" + selectedAvatar;
 
       console.log('Datos del usuario actualizados con éxito!')
   }
@@ -184,7 +187,9 @@ export const MyAccount = () => {
         <div className='flex flex-col justify-center items-center'>
           <img 
             className='w-20 h-20 my-1 '
-            src={`${imageBaseUrl}/avatars/${selectedAvatar.length>3 ? selectedAvatar : currentUser.avatar}`} 
+            // src={`${imageBaseUrl}/avatars/${selectedAvatar.length>3 ? `${imageBaseUrl}/avatars/${selectedAvatar}` : currentUser.avatar}`} 
+            src={`${selectedAvatar.length>3 ? `${imageBaseUrl}/avatars/${selectedAvatar}` : `${imageBaseUrl}/avatars/${currentUser.avatar}`  }`} 
+
             alt="avatar" 
             id="myaccountavatar"
           />

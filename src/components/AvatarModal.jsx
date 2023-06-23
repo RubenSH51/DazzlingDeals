@@ -3,8 +3,10 @@ import "./AvatarModal.css"
 import { AvatarCard } from './AvatarCard'
 import { ShoppingCartContext } from '../context/Context'
 
-export const AvatarModal = () => {
+import { getImageBaseUrl } from '../utils/getImageBaseUrl'
 
+export const AvatarModal = () => {
+    const imageBaseUrl = getImageBaseUrl();
     const [pageModal, setPageModal] = useState(1);
 
     let listaAvatars = [];
@@ -55,7 +57,7 @@ function handleNextPageAvatars(direction)
     let path = window.location.pathname
     if(path === '/myaccount')
     {
-      document.getElementById('myaccountavatar').src = "../assets/avatars/" + selectedAvatar;
+      document.getElementById('myaccountavatar').src = imageBaseUrl+"/avatars/" + selectedAvatar;
     }
     
 

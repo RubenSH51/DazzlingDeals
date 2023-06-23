@@ -1,4 +1,5 @@
 import React from 'react'
+import { getImageBaseUrl } from '../utils/getImageBaseUrl';
 
 export const AvatarCard = ({image, id, isSelected, handleAvatarSelect}) => {
     const imageBaseUrl = getImageBaseUrl();

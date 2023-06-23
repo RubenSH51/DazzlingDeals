@@ -65,7 +65,7 @@ export const NavBar = () => {
                             src="/public/DDnavbar.png" 
                             alt="" 
                             className='w-6 h-6 mr-1'/> 
-                        <p>Dazzling Deals</p>
+                        <p>Dazzling DEALS</p>
                     </div>
                 </NavLink>
             </li>

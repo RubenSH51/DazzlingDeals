@@ -62,7 +62,7 @@ export const NavBar = () => {
                 <NavLink to='/' className={({isActive }) => isActive ? activeStyle : undefined}>
                     <div className='flex items-center'>
                         <img 
-                            src="../../public/DDnavbar.png" 
+                            src="../assets/DDnavbar.png" 
                             alt="" 
                             className='w-6 h-6 mr-1'/> 
                         <p>Dazzling Deals</p>
@@ -113,7 +113,7 @@ export const NavBar = () => {
                 <li>
                 <img 
                     id='navbar-avatar'
-                    src={`../../public/avatars/${currentUser.avatar}`} 
+                    src={`../assets/avatars/${currentUser.avatar}`} 
                     className='w-6 h-6 rounded-xl  
                     transition-transform duration-300 transform hover:scale-150' 
                     alt="avatar" />

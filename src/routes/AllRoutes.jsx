@@ -11,6 +11,7 @@ export const AllRoutes = () => {
     <div className="bg-white text-white mt-8">
         <Routes>
             <Route path='/' element={<Home />}/>
+            <Route path='/DazzlingDeals/' element={<Home />}/>
             <Route path='/all' element={<Home />}/>
             <Route path='/clothes' element={<Home />}/>
             <Route path='/electronics' element={<Home />}/>

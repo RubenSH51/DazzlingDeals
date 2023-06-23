@@ -55,7 +55,7 @@ function handleNextPageAvatars(direction)
     let path = window.location.pathname
     if(path === '/myaccount')
     {
-      document.getElementById('myaccountavatar').src = "../../../public/avatars/" + selectedAvatar;
+      document.getElementById('myaccountavatar').src = "../assets/avatars/" + selectedAvatar;
     }
     
 

@@ -4,8 +4,11 @@ import { ShoppingCartContext } from '../../context/Context'
 
 import { AvatarModal } from '../../components/AvatarModal'
 
+import { getImageBaseUrl } from '../../utils/getImageBaseUrl'
+
 
 export const SignUp = () => {
+  const imageBaseUrl = getImageBaseUrl();
   const {showLogInMenu, setShowLogInMenu} = useContext(ShoppingCartContext)
   let { userLogged,setUserLogged,userList, setUserList,
     setCurrentUser,
@@ -122,7 +125,7 @@ export const SignUp = () => {
         <div className='flex flex-col justify-center items-center'>
           <img 
             className='w-20 h-20 my-4 '
-            src={`../../../public/avatars/${selectedAvatar}`} 
+            src={`${imageBaseUrl}/avatars/${selectedAvatar}`} 
             alt="avatar" 
           />
           <button 

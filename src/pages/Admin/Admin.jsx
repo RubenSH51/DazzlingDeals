@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { ShoppingCartContext } from '../../context/Context'
 import { UsersTable } from '../../components/UsersTable';
+import "./Admin.css"
 
 
 export const Admin = () => {
@@ -11,7 +12,7 @@ export const Admin = () => {
 
 
   return (
-    <div className='text-black flex flex-col items-center justify-center'>
+    <div className='text-black flex flex-col items-center justify-center' id="adminScreen">
         <h2 
             className='text-2xl mt-8 font-bold '
                 >{currentUser.name==='Sherlock' ? "Welcome Sherlock!" : "Admin"}

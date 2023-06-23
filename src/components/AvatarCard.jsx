@@ -23,7 +23,7 @@ export const AvatarCard = ({image, id, isSelected, handleAvatarSelect}) => {
             />
             <img 
                 className='w-15 h-15'
-                src={`../assets/avatars/${image}`} alt="avatar" />
+                src={`public/avatars/${image}`} alt="avatar" />
         </label>
     </div>
   )

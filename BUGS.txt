@@ -1,0 +1,6 @@
+
+
+1- Rutas de imagenes
+2- Pantalla admin tiene que tener un alto mínimo para que se puedan ver 2 filas de ordenes.
+    Esto falla cuando hay pocos usuarios registrados.
+3- Cambiar HOME a DazzlingDeals y acomodar filteredItems.

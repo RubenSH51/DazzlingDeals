@@ -24,7 +24,10 @@ export const Home = () => {
       let category;
       let itemsToRender;
       let currentPath = window.location.pathname.replace('/','')
-      if (currentPath !== '')
+
+      console.log('El valor de currentPath es: ',currentPath)
+
+      if (currentPath !== '' && currentPath!=='DazzlingDeals/')
       {
         category = currentPath;
         console.log('La categoria es: ',category)

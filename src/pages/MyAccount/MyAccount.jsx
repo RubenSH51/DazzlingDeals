@@ -181,7 +181,7 @@ export const MyAccount = () => {
         <div className='flex flex-col justify-center items-center'>
           <img 
             className='w-20 h-20 my-1 '
-            src={`../../../public/avatars/${selectedAvatar.length>3 ? selectedAvatar : currentUser.avatar}`} 
+            src={`public/avatars/${selectedAvatar.length>3 ? selectedAvatar : currentUser.avatar}`} 
             alt="avatar" 
             id="myaccountavatar"
           />

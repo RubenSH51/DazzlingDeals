@@ -87,7 +87,7 @@ export const UsersTable = () => {
               <img 
                   className="w-8 h-8 hover:absolute 
                   transition-transform duration-300 transform hover:scale-150" 
-                  src={`../../public/avatars/${user.avatar}`} alt="" />
+                  src={`public/avatars/${user.avatar}`} alt="" />
             </td>
 
             <td className='pt-2'>

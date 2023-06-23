@@ -91,6 +91,9 @@ export const Home = () => {
       
     }
 
+    console.log("filtered items: ",filteredItems)
+
+
   return (
     <div className='relative'>
       <ProductDetail />

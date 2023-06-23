@@ -5,8 +5,11 @@ import {ShoppingCartContext} from "../context/Context"
 import { SignIn } from './SignIn';
 import "./NavBar.css"
 
+import { getImageBaseUrl } from '../utils/getImageBaseUrl';
+
 
 export const NavBar = () => {
+    const imageBaseUrl = getImageBaseUrl();
 
     let activeStyle = 'underline underline-offset-4';
     const { count, setCount,cartProducts,setCartProducts, setSearchByCategory,
@@ -62,10 +65,10 @@ export const NavBar = () => {
                 <NavLink to='/' className={({isActive }) => isActive ? activeStyle : undefined}>
                     <div className='flex items-center'>
                         <img 
-                            src="/public/DDnavbar.png" 
+                            src={`${imageBaseUrl}/DDnavbar.png`} 
                             alt="" 
                             className='w-6 h-6 mr-1'/> 
-                        <p>Dazzling DEALS</p>
+                        <p>Dazzling Deals</p>
                     </div>
                 </NavLink>
             </li>
@@ -113,11 +116,10 @@ export const NavBar = () => {
                 <li>
                 <img 
                     id='navbar-avatar'
-                    src={`/public/avatars/${currentUser.avatar}`} 
+                    src={`${imageBaseUrl}/avatars/${currentUser.avatar}`} 
                     className='w-6 h-6 rounded-xl  
                     transition-transform duration-300 transform hover:scale-150' 
                     alt="avatar" />
-                    {/* <img src="../../public/sh2.png" className='w-6 h-6 bg-white rounded-lg' alt="avatar" /> */}
                 </li>
                 <li className='text-white/60'>
                     {currentUser.name}

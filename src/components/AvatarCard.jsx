@@ -1,6 +1,7 @@
 import React from 'react'
 
 export const AvatarCard = ({image, id, isSelected, handleAvatarSelect}) => {
+    const imageBaseUrl = getImageBaseUrl();
 
     const handleSelect = () => {
         handleAvatarSelect(id);
@@ -23,7 +24,7 @@ export const AvatarCard = ({image, id, isSelected, handleAvatarSelect}) => {
             />
             <img 
                 className='w-15 h-15'
-                src={`/public/avatars/${image}`} alt="avatar" />
+                src={`${imageBaseUrl}/avatars/${image}`} alt="avatar" />
         </label>
     </div>
   )

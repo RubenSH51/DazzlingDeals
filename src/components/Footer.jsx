@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { getImageBaseUrl } from '../utils/getImageBaseUrl';
+
 export const Footer = () => {
+    const imageBaseUrl = getImageBaseUrl();
   return (
 
 <footer className="bg-white dark:bg-gray-900 relative bottom-0 mt-24 z-0">
@@ -9,7 +12,7 @@ export const Footer = () => {
         <div className="md:flex md:justify-between">
         <div className="mb-6 md:mb-0">
             <a href="#" className="flex items-center">
-                <img src="/public/DD.png" className="h-8 w-12 h-28" alt="Dazzling Deals" />
+                <img src={`${imageBaseUrl}/DD.png`} className="h-8 w-12 h-28" alt="Dazzling Deals" />
                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Dazzling Deals</span>
             </a>
         </div>

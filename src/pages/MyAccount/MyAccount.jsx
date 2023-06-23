@@ -4,7 +4,10 @@ import "./MyAccount.css"
 import { AvatarModal } from '../../components/AvatarModal';
 import { Link } from 'react-router-dom';
 
+import { getImageBaseUrl } from '../../utils/getImageBaseUrl';
+
 export const MyAccount = () => {
+  const imageBaseUrl = getImageBaseUrl();
 
   const {currentUser, userList, setUserList,
     isAvatarsModalOpen, setIsAvatarsModalOpen,
@@ -181,7 +184,7 @@ export const MyAccount = () => {
         <div className='flex flex-col justify-center items-center'>
           <img 
             className='w-20 h-20 my-1 '
-            src={`/public/avatars/${selectedAvatar.length>3 ? selectedAvatar : currentUser.avatar}`} 
+            src={`${imageBaseUrl}/avatars/${selectedAvatar.length>3 ? selectedAvatar : currentUser.avatar}`} 
             alt="avatar" 
             id="myaccountavatar"
           />
